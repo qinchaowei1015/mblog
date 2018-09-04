@@ -1,0 +1,29 @@
+<!---index.html--->
+{% extends 'base.html' %}
+{% block title %} 欢迎光临 我的博客 {% endblock %}
+{% block headmessage %}
+    <h3 style="font-family:楷体;">本站文章列表</a>
+ 
+{% endblock %}
+{% block content %}
+    {% for post in posts %}
+        <div class='penel panel-default'>
+            <div class='panel-heading'>
+                <p style="font-family:微软雅黑;font-size:14pt;font-weight:bold;">
+                    <a href="/post/{{post.slug}}">{{ post.title }}</a>
+                </p>
+            </div>
+            <div class='panel-body' style="background-clock:#ffffdd">
+                <p>
+                    {{ post.body | truncatechars:40 }}
+                </p>
+            </div>
+            <div class='panel-footer' style="background-clock:#efefef">
+                <p>
+                    {{ post.pub_date | date:"Y M D, h:m:s" }}
+                </p>
+            </div>
+        </div>
+        
+    {% endfor %}
+{% endblock %}
